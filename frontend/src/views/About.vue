@@ -1,6 +1,6 @@
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
+    <h1>This is an about321 page</h1>
     <div v-for="post in posts" :key="post.id">
       <div style="border: 2px solid red">
       <h1>{{post.title}}</h1>
@@ -14,18 +14,18 @@
 
 import { Vue } from "vue-class-component";
 import axios from "axios";
-
+import {mapState} from "vuex";
 export default class About extends Vue {
   posts = [];
-
+  computed = mapState(['APIData'])
 
   async created(){
-      axios.get('/about')
+      axios.get('/about', { headers: { Authorization: 'Bearer ${this.$store.state.accessToken}' } })
     .then(response => {
-      console.log(response.data)
-      this.posts = response.data
+
     }).catch(error =>{
-      console.log('Ошибка запроса к абаут')
+      console.log(error)
+      console.log('че кого')
       })
   }
 
