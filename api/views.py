@@ -12,7 +12,6 @@ def index(request):
 
 class PostsView(generics.RetrieveAPIView):
     queryset = Posts.objects.all()
-    permission_classes = (IsAuthenticated,)
 
     def get(self, request, *args, **kwargs):
         queryset = self.get_queryset()

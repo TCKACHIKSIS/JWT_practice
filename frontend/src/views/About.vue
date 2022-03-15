@@ -22,7 +22,8 @@ export default class About extends Vue {
   async created(){
       axios.get('/about', { headers: { Authorization: 'Bearer ${this.$store.state.accessToken}' } })
     .then(response => {
-
+      console.log(response.data)
+      this.posts = response.data
     }).catch(error =>{
       console.log(error)
       console.log('че кого')

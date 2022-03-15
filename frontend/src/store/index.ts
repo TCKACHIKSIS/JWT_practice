@@ -24,7 +24,7 @@ const store = createStore({
           })
               .then( response => {
                   context.commit('updateStorage', {access: response.data.access, refresh: response.data.refresh})
-              } )
+              })
 
         } )
     }
